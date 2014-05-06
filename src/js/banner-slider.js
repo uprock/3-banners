@@ -1,11 +1,11 @@
 $(function () {
     var options = {
-        slideInterval: 1900
+        slideInterval: 3700
     };
     var gallery = $('.banner-1 .container'),
         items = gallery.find('img'),
         len = items.length,
-        current = 1, /* the current item we're looking */
+        current = 0, /* the current item we're looking */
         first = items.filter(':first'),
         last = items.filter(':last');
 
