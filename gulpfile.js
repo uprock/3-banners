@@ -15,7 +15,7 @@ var autoprefixer = require('gulp-autoprefixer'); // set prefixies in css
 // copy images
 gulp.task('img', function () {
     return gulp.src('src/img/**')
-        .pipe(gulp.dest('out/img'))
+        .pipe(gulp.dest('out/img/'))
 });
 
 // Jade Task
@@ -35,8 +35,8 @@ gulp.task('lint', function () {
 
 // Comple Stylus to css
 gulp.task('comple-stylus', function () {
-    return gulp.src('src/styl/bootstrap.less')
-        .pipe(less())
+    return gulp.src('src/styl/**/*.styl')
+        .pipe(stylus())
         .pipe(gulp.dest('out/css/'));
 });
 
@@ -52,7 +52,7 @@ gulp.task('scripts', function () {
     return gulp.src(['src/js/*.js'])
         .pipe(concat('mine.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('out/js'))
+        .pipe(gulp.dest('out/js/'))
 //        &&
 //        gulp.src([
 //                'js/bootstrap/transition.js',
@@ -73,7 +73,7 @@ gulp.task('scripts', function () {
 });
 
 // Watch Files For Changes
-gulp.task('watch', function () {
+gulp.task('watch',  function () {
     gulp.watch('src/js/**', ['lint', 'scripts']);
     gulp.watch('src/styl/*.styl', ['comple-stylus']);
     gulp.watch('out/css/*.css', ['minify-css']);
